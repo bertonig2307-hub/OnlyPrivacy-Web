@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ CyberEroi - Diventa un Eroe della Sicurezza Digitale</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#6c5ce7;
+  --primary-dark:#5641c9;
+  --secondary:#00cec9;
+  --accent:#fd79a8;
+  --success:#2ed573;
+  --danger:#ff4757;
+  --warning:#ffa502;
+  --bg:#f3f1ff;
+  --card:#ffffff;
+  --text:#2d2d3a;
+  --radius:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Nunito',sans-serif;
+  background:#fdfcff;
+  color:var(--text);
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:'Baloo 2',cursive;}
+a{text-decoration:none;color:inherit;}
+img,svg{display:block;max-width:100%;}
+section{padding:80px 20px;}
+.container{max-width:1150px;margin:0 auto;}
+.section-tag{
+  display:inline-block;background:var(--bg);color:var(--primary);
+  padding:6px 16px;border-radius:30px;font-weight:800;font-size:0.85rem;
+  margin-bottom:14px;letter-spacing:0.5px;
+}
+.section-title{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:14px;color:var(--text);}
+.section-title span{color:var(--primary);}
+.section-sub{color:#777;font-size:1.05rem;max-width:620px;margin-bottom:40px;line-height:1.6;}
+.center{text-align:center;margin-left:auto;margin-right:auto;}
+
+/* ===== BUTTONS ===== */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;border:none;border-radius:16px;
+  padding:16px 30px;font-weight:800;font-family:'Nunito';cursor:pointer;font-size:1rem;
+  transition:transform .2s, box-shadow .2s;
+}
+.btn:hover{transform:translateY(-3px);}
+.btn-primary{background:linear-gradient(90deg,var(--primary),#8e6ff5);color:#fff;box-shadow:0 10px 24px rgba(108,92,231,.4);}
+.btn-secondary{background:#fff;color:var(--primary);border:2px solid var(--primary);}
+.btn-light{background:#fff;color:var(--text);}
+.btn-outline-white{background:transparent;border:2px solid rgba(255,255,255,0.6);color:#fff;}
+
+/* ===== NAVBAR ===== */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  background:rgba(255,255,255,0.85);backdrop-filter:blur(10px);
+  box-shadow:0 2px 14px rgba(0,0,0,0.05);
+}
+.nav-wrap{max-width:1150px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;}
+.logo{font-family:'Baloo 2';font-weight:800;font-size:1.4rem;color:var(--primary-dark);display:flex;align-items:center;gap:8px;}
+.nav-links{display:flex;gap:28px;font-weight:700;color:#555;}
+.nav-links a:hover{color:var(--primary);}
+.nav-cta{display:flex;gap:10px;}
+.burger{display:none;font-size:1.6rem;cursor:pointer;color:var(--primary);background:none;border:none;}
+
+/* ===== HERO ===== */
+.hero{
+  position:relative;padding:160px 20px 100px;
+  background:radial-gradient(circle at 20% 20%,#efe9ff,transparent 50%),
+             radial-gradient(circle at 85% 15%,#e2fff9,transparent 45%),
+             linear-gradient(180deg,#faf9ff,#ffffff);
+  overflow:hidden;
+}
+.hero-grid{max-width:1150px;margin:0 auto;display:grid;grid-template-columns:1.1fr 1fr;gap:50px;align-items:center;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:#fff0f5;color:var(--accent);
+  padding:8px 16px;border-radius:30px;font-weight:800;font-size:0.85rem;margin-bottom:18px;box-shadow:0 4px 14px rgba(253,121,168,.2);}
+.hero h1{font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.15;margin-bottom:18px;}
+.hero h1 .hl1{color:var(--primary);}
+.hero h1 .hl2{color:var(--accent);}
+.hero p.lead{font-size:1.15rem;color:#666;margin-bottom:28px;max-width:520px;line-height:1.6;}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px;}
+.hero-trust{display:flex;gap:22px;flex-wrap:wrap;color:#888;font-weight:700;font-size:0.9rem;}
+.hero-trust span{display:flex;align-items:center;gap:6px;}
+
+.hero-visual{position:relative;display:flex;justify-content:center;align-items:center;}
+.phone-frame{
+  width:290px;background:#1b1b2b;border-radius:38px;padding:14px;box-shadow:0 30px 60px rgba(108,92,231,.35);
+  position:relative;z-index:3;
+}
+.phone-screen{
+  background:linear-gradient(160deg,#efe9ff,#e0fffa);border-radius:26px;overflow:hidden;
+  padding:18px 14px;min-height:480px;
+}
+.phone-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+.phone-chip{background:rgba(255,255,255,0.7);border-radius:20px;padding:4px 10px;font-size:0.65rem;font-weight:800;color:var(--primary);}
+.phone-avatar{
+  width:80px;height:80px;border-radius:50%;background:var(--primary);display:flex;align-items:center;justify-content:center;
+  font-size:2.4rem;margin:0 auto 10px;box-shadow:0 8px 18px rgba(108,92,231,.4);position:relative;
+}
+.phone-avatar span.crown{position:absolute;top:-14px;right:-6px;font-size:1.5rem;}
+.phone-name{text-align:center;font-family:'Baloo 2';font-weight:700;margin-bottom:4px;}
+.phone-level{text-align:center;color:#888;font-size:0.8rem;margin-bottom:14px;}
+.phone-progress{background:#fff;border-radius:10px;height:10px;overflow:hidden;margin-bottom:18px;}
+.phone-progress-fill{height:100%;width:68%;background:linear-gradient(90deg,var(--primary),var(--secondary));}
+.phone-card{background:#fff;border-radius:14px;padding:10px 12px;margin-bottom:10px;display:flex;align-items:center;gap:10px;box-shadow:0 3px 10px rgba(0,0,0,.05);font-weight:700;font-size:0.85rem;}
+.phone-card .ic{font-size:1.3rem;}
+.float-badge{
+  position:absolute;background:#fff;border-radius:14px;padding:10px 14px;box-shadow:0 10px 24px rgba(0,0,0,.12);
+  font-weight:800;font-size:0.85rem;display:flex;align-items:center;gap:8px;z-index:4;animation:float 4s ease-in-out infinite;
+}
+.badge-1{top:10%;left:-14%;color:var(--success);}
+.badge-2{bottom:16%;right:-16%;color:var(--accent);animation-delay:1s;}
+.badge-3{top:48%;right:-20%;color:var(--warning);animation-delay:2s;}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.blob{position:absolute;border-radius:50%;filter:blur(10px);opacity:.5;z-index:1;}
+.blob1{width:260px;height:260px;background:#d6ccff;top:-40px;left:-60px;}
+.blob2{width:220px;height:220px;background:#c6fff2;bottom:-30px;right:-40px;}
+
+/* ===== LOGOS STRIP ===== */
+.strip{background:#fff;padding:30px 20px;border-top:1px solid #f0eeff;border-bottom:1px solid #f0eeff;}
+.strip-inner{max-width:1000px;margin:0 auto;display:flex;justify-content:space-around;flex-wrap:wrap;gap:20px;color:#999;font-weight:800;}
+
+/* ===== FEATURES - GAME STYLE ===== */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;}
+.feature-card{
+  background:#fff;border-radius:var(--radius);padding:28px 24px;box-shadow:0 6px 20px rgba(0,0,0,.05);
+  border-top:5px solid var(--primary);transition:transform .25s, box-shadow .25s;position:relative;overflow:hidden;
+}
+.feature-card:hover{transform:translateY(-6px);box-shadow:0 16px 34px rgba(0,0,0,.1);}
+.feature-icon{width:58px;height:58px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.7rem;margin-bottom:16px;}
+.feature-card h3{font-size:1.2rem;margin-bottom:8px;}
+.feature-card p{color:#777;font-size:0.95rem;line-height:1.55;}
+
+/* ===== BIG FEATURE ROWS (alternating) ===== */
+.big-feature{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:110px;}
+.big-feature.reverse .ft-visual{order:2;}
+.big-feature.reverse .ft-text{order:1;}
+.ft-text .section-tag{margin-bottom:12px;}
+.ft-text h3{font-size:clamp(1.5rem,3vw,2.1rem);margin-bottom:16px;}
+.ft-text p{color:#666;line-height:1.7;margin-bottom:20px;font-size:1.02rem;}
+.ft-list{list-style:none;}
+.ft-list li{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;color:#555;font-weight:600;}
+.ft-list li .chk{color:var(--success);font-size:1.1rem;flex-shrink:0;}
+.ft-visual{position:relative;display:flex;justify-content:center;}
+.mock-card{background:#fff;border-radius:22px;padding:24px;box-shadow:0 20px 50px rgba(0,0,0,.12);width:100%;max-width:400px;}
+
+/* mock: trofei */
+.mock-trophy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.mock-trophy{background:var(--bg);border-radius:14px;padding:16px 8px;text-align:center;font-size:1.8rem;}
+.mock-trophy.locked{opacity:.35;filter:grayscale(1);}
+.mock-trophy small{display:block;font-size:0.6rem;margin-top:4px;color:#888;font-weight:800;}
+
+/* mock: lesson comic */
+.mock-comic .bubble{background:var(--bg);border-radius:14px;padding:12px 16px;margin-bottom:10px;font-size:0.9rem;font-weight:600;color:#444;}
+.mock-comic .bubble.me{background:#e6fff5;}
+
+/* mock: quiz chat */
+.mock-chat-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;font-weight:800;}
+.mock-chat-bubble{background:#2a2a40;color:#fff;padding:12px 14px;border-radius:14px;font-size:0.9rem;margin-bottom:14px;}
+.mock-choice{display:flex;gap:10px;}
+.mock-choice button{flex:1;border:none;padding:10px;border-radius:12px;font-weight:800;cursor:default;font-size:0.85rem;}
+.mock-choice .safe{background:var(--success);color:#fff;}
+.mock-choice .danger{background:var(--danger);color:#fff;}
+
+/* mock: story */
+.mock-story p{font-size:0.95rem;color:#555;margin-bottom:16px;line-height:1.5;}
+.mock-story-opt{display:block;width:100%;text-align:left;background:var(--bg);border:none;border-left:5px solid var(--primary);
+  padding:10px 14px;border-radius:10px;margin-bottom:8px;font-weight:700;color:#444;font-size:0.88rem;}
+
+/* mock: emergency */
+.mock-emergency .acc{background:var(--bg);border-radius:12px;padding:14px 16px;margin-bottom:10px;font-weight:800;color:var(--primary-dark);font-size:0.9rem;display:flex;justify-content:space-between;}
+
+/* ===== HOW IT WORKS ===== */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+.step{text-align:center;position:relative;}
+.step-num{
+  width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--secondary));
+  color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Baloo 2';font-size:1.4rem;font-weight:800;
+  margin:0 auto 16px;box-shadow:0 8px 18px rgba(108,92,231,.3);
+}
+.step h4{margin-bottom:8px;}
+.step p{color:#777;font-size:0.92rem;line-height:1.5;}
+.step-arrow{position:absolute;top:28px;right:-26px;font-size:1.5rem;color:#ccc;}
+
+/* ===== STATS ===== */
+.stats-band{
+  background:linear-gradient(90deg,var(--primary),#8e6ff5);color:#fff;padding:60px 20px;
+}
+.stats-grid2{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center;}
+.stat-num2{font-family:'Baloo 2';font-size:2.4rem;font-weight:800;}
+.stat-label2{opacity:.85;font-weight:700;font-size:0.9rem;}
+
+/* ===== TESTIMONIALS ===== */
+.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;}
+.testi-card{background:#fff;border-radius:var(--radius);padding:26px;box-shadow:0 6px 20px rgba(0,0,0,.05);}
+.testi-stars{color:var(--warning);margin-bottom:10px;}
+.testi-text{color:#555;font-style:italic;margin-bottom:18px;line-height:1.6;}
+.testi-who{display:flex;align-items:center;gap:12px;}
+.testi-avatar{width:44px;height:44px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:1.3rem;}
+.testi-name{font-weight:800;font-size:0.9rem;}
+.testi-role{color:#999;font-size:0.8rem;}
+
+/* ===== SAFETY / PARENTS SECTION ===== */
+.safety-section{background:var(--bg);border-radius:30px;margin:0 20px;padding:60px 40px;max-width:1150px;margin-inline:auto;}
+.safety-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+.safety-points{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.safety-point{background:#fff;border-radius:16px;padding:18px;box-shadow:0 4px 14px rgba(0,0,0,.05);}
+.safety-point .ic{font-size:1.6rem;margin-bottom:8px;}
+.safety-point h4{font-size:1rem;margin-bottom:4px;}
+.safety-point p{font-size:0.85rem;color:#777;}
+
+/* ===== FAQ ===== */
+.faq-item{background:#fff;border-radius:14px;box-shadow:0 4px 14px rgba(0,0,0,.05);margin-bottom:12px;overflow:hidden;}
+.faq-q{padding:18px 22px;font-weight:800;display:flex;justify-content:space-between;cursor:pointer;color:var(--primary-dark);}
+.faq-a{padding:0 22px;max-height:0;overflow:hidden;transition:all .3s ease;color:#666;line-height:1.6;}
+.faq-item.open .faq-a{padding:0 22px 20px;max-height:300px;}
+.faq-item.open .faq-q .arrow{transform:rotate(180deg);}
+.arrow{transition:transform .3s;}
+
+/* ===== FINAL CTA ===== */
+.final-cta{
+  background:linear-gradient(135deg,#6c5ce7,#8e6ff5 50%,#00cec9);
+  border-radius:30px;margin:0 20px 0;max-width:1150px;margin-inline:auto;
+  padding:70px 40px;text-align:center;color:#fff;position:relative;overflow:hidden;
+}
+.final-cta h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:14px;}
+.final-cta p{opacity:.9;max-width:520px;margin:0 auto 30px;font-size:1.05rem;}
+.final-cta .btn-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.final-emoji{position:absolute;font-size:5rem;opacity:.15;}
+.e1{top:-20px;left:30px;}
+.e2{bottom:-30px;right:40px;}
+
+/* ===== FOOTER ===== */
+footer{background:#1b1b2b;color:#aaa;padding:60px 20px 30px;}
+.footer-grid{max-width:1150px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px;}
+.footer-logo{font-family:'Baloo 2';color:#fff;font-size:1.3rem;font-weight:800;margin-bottom:14px;}
+.footer-col h4{color:#fff;margin-bottom:16px;font-size:0.95rem;}
+.footer-col ul{list-style:none;}
+.footer-col li{margin-bottom:10px;font-size:0.9rem;}
+.footer-col a:hover{color:#fff;}
+.footer-bottom{max-width:1150px;margin:0 auto;border-top:1px solid #333;padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:0.85rem;}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;}
+  .hero-visual{margin-top:40px;}
+  .big-feature,.big-feature.reverse{grid-template-columns:1fr;}
+  .big-feature.reverse .ft-visual{order:1;}
+  .big-feature.reverse .ft-text{order:2;}
+  .steps{grid-template-columns:1fr 1fr;}
+  .step-arrow{display:none;}
+  .stats-grid2{grid-template-columns:1fr 1fr;}
+  .safety-grid{grid-template-columns:1fr;}
+  .safety-points{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:700px){
+  .nav-links{display:none;}
+  .burger{display:block;}
+  .nav-cta .btn-secondary{display:none;}
+}
+@media(max-width:480px){
+  .features-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header>
+  <div class="nav-wrap">
+    <div class="logo">🛡️ CyberEroi</div>
+    <nav class="nav-links">
+      <a href="#features">Funzionalità</a>
+      <a href="#come-funziona">Come funziona</a>
+      <a href="#genitori">Per i genitori</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#" class="btn btn-secondary" style="padding:10px 18px;">Accedi</a>
+      <a href="#cta" class="btn btn-primary" style="padding:10px 20px;">Inizia Gratis 🚀</a>
+    </div>
+    <button class="burger">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-badge">🎮 Impara giocando — gratis per sempre</div>
+      <h1>Trasforma i ragazzi in <span class="hl1">Eroi</span> della <span class="hl2">Sicurezza Digitale</span></h1>
+      <p class="lead">CyberEroi insegna ai ragazzi delle medie a riconoscere truffe, proteggere la privacy e difendersi online, attraverso lezioni brevi, giochi e sfide interattive. Niente noia, solo avventura! 🚀</p>
+      <div class="hero-cta">
+        <a href="#cta" class="btn btn-primary">🎮 Inizia l'avventura</a>
+        <a href="#features" class="btn btn-secondary">Scopri come funziona</a>
+      </div>
+      <div class="hero-trust">
+        <span>⭐ 4.9/5 genitori</span>
+        <span>🏫 Usata in 200+ scuole</span>
+        <span>🔒 100% sicura e senza pubblicità</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="blob blob1"></div>
+      <div class="blob blob2"></div>
+      <div class="float-badge badge-1">🏆 +40 punti!</div>
+      <div class="float-badge badge-2">🔥 Serie di 7 giorni</div>
+      <div class="float-badge badge-3">✅ Livello 5!</div>
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="phone-top">
+            <span class="phone-chip">💎 480 pt</span>
+            <span class="phone-chip">🔥 7</span>
+          </div>
+          <div class="phone-avatar">🦸<span class="crown">👑</span></div>
+          <div class="phone-name">Giulia, Lv. 6</div>
+          <div class="phone-level">Prossimo livello tra 20 punti</div>
+          <div class="phone-progress"><div class="phone-progress-fill"></div></div>
+          <div class="phone-card"><span class="ic">🔑</span> Password Impossibili ✅</div>
+          <div class="phone-card"><span class="ic">🎣</span> Truffe via Messaggio ✅</div>
+          <div class="phone-card"><span class="ic">🕵️</span> Proteggi la Privacy 🔓</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-inner">
+    <div>🏫 Scuole partner</div>
+    <div>👨‍👩‍👧 Consigliata da genitori</div>
+    <div>🧑‍🏫 Validata da pedagogisti</div>
+    <div>🛡️ Progetto Safer Internet</div>
+  </div>
+</div>
+
+<!-- FEATURES OVERVIEW -->
+<section id="features">
+  <div class="container">
+    <div class="center" style="text-align:center;">
+      <span class="section-tag">COSA RENDE CYBEROI SPECIALE</span>
+      <h2 class="section-title">Un'app pensata come <span>un videogioco</span>,<br> non come un corso noioso</h2>
+      <p class="section-sub center">Ogni funzionalità è progettata per tenere alta la motivazione dei ragazzi, mentre imparano competenze fondamentali per la vita digitale.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card" style="border-top-color:#6c5ce7;">
+        <div class="feature-icon" style="background:#efe9ff;">🎮</div>
+        <h3>Livelli e Punti</h3>
+        <p>Ogni lezione completata fa guadagnare punti esperienza e fa salire di livello, proprio come in un videogioco.</p>
+      </div>
+      <div class="feature-card" style="border-top-color:#fd79a8;">
+        <div class="feature-icon" style="background:#ffeef5;">🧑‍🚀</div>
+        <h3>Avatar personalizzabile</h3>
+        <p>I ragazzi creano il proprio personaggio e sbloccano vestiti e accessori speciali superando le sfide.</p>
+      </div>
+      <div class="feature-card" style="border-top-color:#ffa502;">
+        <div class="feature-icon" style="background:#fff6e6;">🏅</div>
+        <h3>Trofei da collezionare</h3>
+        <p>Medaglie digitali per ogni traguardo raggiunto: dalla prima lezione al patentino finale.</p>
+      </div>
+      <div class="feature-card" style="border-top-color:#00cec9;">
+        <div class="feature-icon" style="background:#e6fffb;">🔥</div>
+        <h3>Serie giornaliera</h3>
+        <p>Basta anche solo 2 minuti al giorno per mantenere viva la propria striscia e ottenere piccoli premi.</p>
+      </div>
+      <div class="feature-card" style="border-top-color:#2ed573;">
+        <div class="feature-icon" style="background:#e9fff3;">📚</div>
+        <h3>Lezioni da 3 minuti</h3>
+        <p>Niente muri di testo: spiegazioni brevi, chiare e illustrate con fumetti e video animati.</p>
+      </div>
+      <div class="feature-card" style="border-top-color:#636e72;">
+        <div class="feature-icon" style="background:#f1f2f6;">🆘</div>
+        <h3>Pronto Soccorso</h3>
+        <p>Guide immediate passo-passo per sapere cosa fare in caso di account rubati, insulti o link pericolosi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIG FEATURE 1: LEZIONI -->
+<section>
+  <div class="container">
+    <div class="big-feature">
+      <div class="ft-text">
+        <span class="section-tag">📚 LEZIONI BREVI</span>
+        <h3>Spiegazioni semplici, niente noia</h3>
+        <p>Ogni argomento viene spiegato in massimo 3 minuti, con un linguaggio adatto ai ragazzi delle medie: fumetti, storie e personaggi simpatici al posto di lunghi testi scolastici.</p>
+        <ul class="ft-list">
+          <li><span class="chk">✅</span> Come creare password impossibili da indovinare</li>
+          <li><span class="chk">✅</span> Riconoscere email e messaggi truffa</li>
+          <li><span class="chk">✅</span> Cosa non pubblicare sui social</li>
+          <li><span class="chk">✅</span> Difendersi dal cyberbullismo</li>
+          <li><span class="chk">✅</span> Evitare virus scaricando file e giochi</li>
+        </ul>
+      </div>
+      <div class="ft-visual">
+        <div class="mock-card mock-comic">
+          <h4 style="margin-bottom:12px;">🔑 Password Impossibili</h4>
+          <div class="bubble">🔑 Una password forte è come una porta blindata: più è complicata, più sei al sicuro!</div>
+          <div class="bubble">❌ "123456" è la prima cosa che un hacker prova.</div>
+          <div class="bubble me">✅ "Tr0pp0F0rt3!$" è lunga, con simboli e numeri: perfetta!</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BIG FEATURE 2: PROVE PRATICHE -->
+    <div class="big-feature reverse">
+      <div class="ft-text">
+        <span class="section-tag">🧪 PROVE PRATICHE</span>
+        <h3>Si impara meglio mettendosi alla prova</h3>
+        <p>Dopo la teoria, si passa subito all'azione con sfide pratiche che simulano situazioni reali che i ragazzi incontrano online ogni giorno.</p>
+        <ul class="ft-list">
+          <li><span class="chk">✅</span> "Trova la Truffa": vero o falso messaggio?</li>
+          <li><span class="chk">✅</span> Testa-Password: quanto è sicura la tua password?</li>
+          <li><span class="chk">✅</span> Escape Room: salva il profilo hackerato</li>
+          <li><span class="chk">✅</span> Finto Profilo Social: trova gli errori di privacy</li>
+        </ul>
+      </div>
+      <div class="ft-visual">
+        <div class="mock-card">
+          <div class="mock-chat-header">🏦 Banca Sicura</div>
+          <div class="mock-chat-bubble">URGENTE: il tuo conto è stato sospeso. Clicca qui entro 24 ore: bit.ly/sblocca</div>
+          <div class="mock-choice">
+            <button class="safe">✅ È vero</button>
+            <button class="danger">🚨 È una truffa</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BIG FEATURE 3: STORIE -->
+    <div class="big-feature">
+      <div class="ft-text">
+        <span class="section-tag">📖 STORIE INTERATTIVE</span>
+        <h3>Le scelte hanno conseguenze (virtuali!)</h3>
+        <p>Storie a bivi dove il ragazzo decide cosa fare in situazioni delicate, scoprendo subito le conseguenze della propria scelta in un ambiente sicuro.</p>
+        <ul class="ft-list">
+          <li><span class="chk">✅</span> Scenari realistici su chat e social</li>
+          <li><span class="chk">✅</span> Scelte multiple con esiti diversi</li>
+          <li><span class="chk">✅</span> Spiegazione finale del perché una scelta è sicura o rischiosa</li>
+        </ul>
+      </div>
+      <div class="ft-visual">
+        <div class="mock-card mock-story">
+          <h4 style="margin-bottom:10px;">🎮 Lo sconosciuto nel gioco online</h4>
+          <p>Un giocatore misterioso ti scrive: "Sei simpatico/a! Mi mandi una foto?" Cosa fai?</p>
+          <button class="mock-story-opt">📷 Gliela mando</button>
+          <button class="mock-story-opt">🚫 Lo blocco e segnalo</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- BIG FEATURE 4: PRONTO SOCCORSO -->
+    <div class="big-feature reverse">
+      <div class="ft-text">
+        <span class="section-tag">🆘 PRONTO SOCCORSO</span>
+        <h3>Una guida sempre pronta nei momenti difficili</h3>
+        <p>Se qualcosa va storto, i ragazzi sanno esattamente cosa fare grazie a guide chiare passo-passo, sempre a portata di click.</p>
+        <ul class="ft-list">
+          <li><span class="chk">✅</span> "Mi hanno rubato l'account, cosa faccio?"</li>
+          <li><span class="chk">✅</span> "Qualcuno mi insulta in chat, come mi difendo?"</li>
+          <li><span class="chk">✅</span> "Ho cliccato un link strano, sono in pericolo?"</li>
+        </ul>
+      </div>
+      <div class="ft-visual">
+        <div class="mock-card mock-emergency">
+          <div class="acc">😱 Mi hanno rubato l'account <span>▲</span></div>
+          <div class="acc" style="opacity:.5;">😢 Qualcuno mi insulta in chat <span>▼</span></div>
+          <div class="acc" style="opacity:.5;">🔗 Ho cliccato un link strano <span>▼</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<section class="stats-band">
+  <div class="stats-grid2">
+    <div><div class="stat-num2">5</div><div class="stat-label2">Lezioni tematiche</div></div>
+    <div><div class="stat-num2">4</div><div class="stat-label2">Prove pratiche</div></div>
+    <div><div class="stat-num2">12</div><div class="stat-label2">Trofei da sbloccare</div></div>
+    <div><div class="stat-num2">100%</div><div class="stat-label2">Gratuita e sicura</div></div>
+  </div>
+</section>
+
+<!-- COME FUNZIONA -->
+<section id="come-funziona">
+  <div class="container">
+    <div style="text-align:center;">
+      <span class="section-tag">COME FUNZIONA</span>
+      <h2 class="section-title">Pronti in <span>4 semplici passi</span></h2>
+      <p class="section-sub center">Bastano pochi minuti al giorno per iniziare a costruire competenze digitali che dureranno tutta la vita.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Crea l'avatar</h4>
+        <p>Scegli volto, colore e personalizza il tuo Eroe digitale.</p>
+        <div class="step-arrow">➔</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Guarda le lezioni</h4>
+        <p>Impara in 3 minuti con fumetti e video animati.</p>
+        <div class="step-arrow">➔</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Affronta le sfide</h4>
+        <p>Mettiti alla prova con giochi e storie interattive.</p>
+        <div class="step-arrow">➔</div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Ottieni il patentino</h4>
+        <p>Scarica il tuo attestato digitale di Sicurezza Online.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section style="background:var(--bg);">
+  <div class="container">
+    <div style="text-align:center;">
+      <span class="section-tag">COSA DICONO DI NOI</span>
+      <h2 class="section-title">Genitori e insegnanti <span>lo adorano</span></h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testi-card">
+        <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+        <p class="testi-text">"Mio figlio chiedeva di fare le lezioni ogni sera per non perdere la serie! Non pensavo fosse possibile con un argomento del genere."</p>
+        <div class="testi-who">
+          <div class="testi-avatar">👩</div>
+          <div><div class="testi-name">Laura M.</div><div class="testi-role">Mamma di Tommaso, 12 anni</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+        <p class="testi-text">"L'ho usata con tutta la classe durante l'ora di educazione civica. Finalmente uno strumento che i ragazzi usano con entusiasmo vero."</p>
+        <div class="testi-who">
+          <div class="testi-avatar">👨‍🏫</div>
+          <div><div class="testi-name">Prof. Andrea R.</div><div class="testi-role">Scuola Media "A. Manzoni"</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+        <p class="testi-text">"Il gioco 'Trova la Truffa' mi ha davvero aperto gli occhi. Ora controllo sempre i link prima di cliccare!"</p>
+        <div class="testi-who">
+          <div class="testi-avatar">🧒</div>
+          <div><div class="testi-name">Sofia, 13 anni</div><div class="testi-role">Utente CyberEroi</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GENITORI / SICUREZZA -->
+<section id="genitori">
+  <div class="safety-section">
+    <div class="safety-grid">
+      <div>
+        <span class="section-tag">🔒 SICURA E ADATTA A TUTTI</span>
+        <h2 class="section-title" style="font-size:2rem;">Pensata per rassicurare <span>i genitori</span></h2>
+        <p class="section-sub" style="margin-bottom:10px;">CyberEroi è stata progettata con grafica moderna e accattivante, adatta ai ragazzi delle medie, con funzionalità pensate per l'inclusione e la tranquillità di tutta la famiglia.</p>
+      </div>
+      <div class="safety-points">
+        <div class="safety-point"><div class="ic">🎨</div><h4>Grafica moderna</h4><p>Colorata e coinvolgente, non infantile.</p></div>
+        <div class="safety-point"><div class="ic">🔊</div><h4>Audio-lettura</h4><p>Legge i testi ad alta voce per chi ha difficoltà di lettura.</p></div>
+        <div class="safety-point"><div class="ic">🚫</div><h4>Senza pubblicità</h4><p>Nessun annuncio o contenuto esterno non controllato.</p></div>
+        <div class="safety-point"><div class="ic">🎓</div><h4>Patentino finale</h4><p>Un attestato digitale scaricabile a fine percorso.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container" style="max-width:800px;">
+    <div style="text-align:center;">
+      <span class="section-tag">DOMANDE FREQUENTI</span>
+      <h2 class="section-title">Hai dubbi? <span>Rispondiamo noi</span></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">Per quale età è pensata CyberEroi? <span class="arrow">▼</span></div>
+        <div class="faq-a">L'app è pensata principalmente per ragazzi e ragazze della scuola secondaria di primo grado (11-14 anni), con un linguaggio e una grafica adatti a questa fascia d'età.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">È davvero gratuita? <span class="arrow">▼</span></div>
+        <div class="faq-a">Sì, tutte le funzionalità base di CyberEroi sono completamente gratuite, senza pubblicità e senza acquisti nascosti.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">I miei dati personali sono al sicuro? <span class="arrow">▼</span></div>
+        <div class="faq-a">Assolutamente sì. Non chiediamo dati sensibili e tutti i progressi vengono salvati in modo sicuro, nel rispetto della privacy dei minori.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Posso usarla anche a scuola con tutta la classe? <span class="arrow">▼</span></div>
+        <div class="faq-a">Certo! CyberEroi è utilizzata da diverse scuole come supporto per l'educazione civica digitale e i progetti di cittadinanza digitale.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Cosa ottengo alla fine del percorso? <span class="arrow">▼</span></div>
+        <div class="faq-a">Completando tutte le lezioni e le prove pratiche sblocchi il Patentino di Sicurezza Digitale, un attestato scaricabile e personalizzato con il tuo nome!</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="cta">
+  <div class="final-cta">
+    <div class="final-emoji e1">🛡️</div>
+    <div class="final-emoji e2">🏆</div>
+    <h2>Pronto a diventare un Eroe della Sicurezza Digitale?</h2>
+    <p>Inizia oggi stesso, gratuitamente. Bastano 3 minuti al giorno per imparare a proteggersi online, divertendosi.</p>
+    <div class="btn-row">
+      <a href="#" class="btn btn-light">🚀 Inizia Gratis Ora</a>
+      <a href="https://bertonig2307-hub.github.io/OnlyPrivacy/" class="btn btn-outline-white" id="landing-install-btn">
+  📱 Scarica l'App
+</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">🛡️ CyberEroi</div>
+      <p style="font-size:0.9rem;line-height:1.6;max-width:280px;">L'app che trasforma l'educazione alla sicurezza digitale in un'avventura coinvolgente per ragazzi delle medie.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Prodotto</h4>
+      <ul>
+        <li><a href="#features">Funzionalità</a></li>
+        <li><a href="#come-funziona">Come funziona</a></li>
+        <li><a href="#genitori">Per i genitori</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Risorse</h4>
+      <ul>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Per le scuole</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legale</h4>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Termini di servizio</a></li>
+        <li><a href="#">Contatti</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2024 CyberEroi. Tutti i diritti riservati.</div>
+    <div>Fatto con 💜 per rendere internet un posto più sicuro</div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-item').forEach(item=>{
+  item.querySelector('.faq-q').addEventListener('click', ()=>{
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!wasOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
